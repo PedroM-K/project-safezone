@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Segurança Digital - Aprenda a se Proteger</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>SeguraWeb</span>
+        </div>
+        <button id="contrast-toggle" class="contrast-btn" aria-label="Alternar alto contraste">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+    </header>
+
+    <main class="container">
+        <!-- Tela Home -->
+        <section id="screen-home" class="screen active">
+            <div class="hero">
+                <h1>Navegue com Segurança</h1>
+                <p>A internet é um mundo cheio de oportunidades, mas também de armadilhas. Aprenda a proteger seus dados, identificar golpes e usar a tecnologia com mais confiança.</p>
+                <div class="illustration">
+                    <i class="fa-solid fa-user-shield main-icon"></i>
+                </div>
+                <button class="btn btn-primary btn-large" onclick="app.navigate('level-selection')">
+                    Começar a Aprender <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- Tela de Seleção de Nível -->
+        <section id="screen-level-selection" class="screen">
+            <h2>Escolha seu Nível</h2>
+            <p>Temos quizzes adaptados para todos os perfis. Por onde quer começar?</p>
+            
+            <div class="level-cards">
+                <div class="card" onclick="app.startQuiz('basic')">
+                    <div class="card-icon"><i class="fa-solid fa-seedling"></i></div>
+                    <h3>Básico</h3>
+                    <p>Ideal para iniciantes e idosos. Aprenda o feijão com arroz da segurança digital.</p>
+                </div>
+                <div class="card" onclick="app.startQuiz('intermediate')">
+                    <div class="card-icon"><i class="fa-solid fa-user-astronaut"></i></div>
+                    <h3>Intermediário</h3>
+                    <p>Para quem já usa a internet no dia a dia e quer se proteger de golpes.</p>
+                </div>
+                <div class="card" onclick="app.startQuiz('advanced')">
+                    <div class="card-icon"><i class="fa-solid fa-rocket"></i></div>
+                    <h3>Avançado</h3>
+                    <p>Desafios para jovens e usuários experientes que querem dominar a privacidade.</p>
+                </div>
+            </div>
+            <button class="btn btn-secondary mt-2" onclick="app.navigate('home')">Voltar</button>
+        </section>
+
+        <!-- Tela do Quiz -->
+        <section id="screen-quiz" class="screen">
+            <div class="quiz-header">
+                <button class="btn btn-icon" onclick="app.navigate('level-selection')" aria-label="Voltar">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+                <div class="progress-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+                <span id="question-counter">1/5</span>
+            </div>
+
+            <div class="question-container">
+                <h3 id="question-text">Pergunta aqui</h3>
+                <div id="options-container" class="options-container">
+                    <!-- Opções geradas via JS -->
+                </div>
+            </div>
+
+            <div id="feedback-container" class="feedback-container hidden">
+                <div id="feedback-icon" class="feedback-icon"></div>
+                <h4 id="feedback-title">Correto!</h4>
+                <p id="feedback-explanation">Explicação aqui.</p>
+                <button class="btn btn-primary" id="next-btn" onclick="app.nextQuestion()">Próxima Pergunta</button>
+            </div>
+        </section>
+
+        <!-- Tela de Resultados -->
+        <section id="screen-results" class="screen">
+            <div class="results-container">
+                <div class="score-icon">
+                    <i class="fa-solid fa-trophy"></i>
+                </div>
+                <h2>Quiz Concluído!</h2>
+                <p class="score-text">Você acertou <strong id="score-display">4</strong> de <strong id="total-display">5</strong> perguntas.</p>
+                
+                <div class="recommendations">
+                    <h3>Recomendações:</h3>
+                    <ul id="recommendations-list">
+                        <!-- Gerado via JS -->
+                    </ul>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-secondary" onclick="app.navigate('level-selection')">Outros Níveis</button>
+                    <button class="btn btn-primary" onclick="app.retryQuiz()">Tentar Novamente</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
